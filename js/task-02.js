@@ -6,3 +6,13 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
+
+const ulIngredients = document.getElementById("ingredients");
+
+// Створення елементів <li> та додавання їх до списку
+ingredients.forEach((ingredient) => {
+  const li = document.createElement("li");
+  li.textContent = ingredient;
+  li.classList.add("item");
+  ulIngredients.appendChild(li);
+});
