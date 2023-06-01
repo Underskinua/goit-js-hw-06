@@ -7,7 +7,12 @@ createButton.addEventListener('click', createBoxes);
 destroyButton.addEventListener('click', destroyBoxes);
 
 function createBoxes() {
-  const amount = input.value;
+  const amount = Number(input.value);
+  if (isNaN(amount) || amount < 1 || amount > 100) {
+    input.value = '';
+    return;
+  }
+
   const boxes = [];
 
   for (let i = 0; i < amount; i++) {
@@ -20,16 +25,16 @@ function createBoxes() {
   }
 
   boxesContainer.append(...boxes);
+  input.value = '';
 }
 
 function destroyBoxes() {
   boxesContainer.innerHTML = '';
+  input.value = '';
 }
-
-
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
-    .padStart(6, 0)}`;
+    .padStart(6, '0')}`;
 }
